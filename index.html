@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <style>.contacts-box{display:none}.emergency-section .help-box h3{margin-top:0}.emergency-section .info-card h3{margin-top:0}.emergency-section .info-card a{color:var(--ink);font-weight:700}.street-name{font-weight:700;color:var(--ink);white-space:nowrap}</style>
+    <style>.contacts-box{display:none}.emergency-section .help-box h3{margin-top:0}.emergency-section .info-card h3{margin-top:0}.emergency-section .info-card a{color:var(--ink);font-weight:700}.street-name{font-weight:700;color:var(--ink);white-space:nowrap}.nav-search{width:min(34vw,280px)}.nav-search label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}.nav-search input{width:100%;padding:9px 13px;border:1px solid var(--line);border-radius:999px;background:white;color:var(--ink);font:inherit;font-size:13px}.top-actions{gap:14px}@media(max-width:760px){.nav-search{width:150px}.nav-search input{font-size:12px;padding:8px 10px}}</style>
   </head>
   <body>
     <header class="topbar">
@@ -18,6 +18,7 @@
         <span>La Passerelle<small>Jullouville · Normandie</small></span>
       </a>
       <div class="top-actions">
+        <div class="nav-search"><label for="guide-search" data-fr="Rechercher dans le guide" data-en="Search the guide">Rechercher dans le guide</label><input id="guide-search" type="search" placeholder="Wi-Fi, café, départ…" data-placeholder-fr="Wi-Fi, café, départ…" data-placeholder-en="Wi-Fi, coffee, departure…"></div>
         <button class="language-toggle" type="button" data-language-toggle aria-label="Changer de langue">EN</button>
         <a class="help-link" href="#aide"><span data-fr="Besoin d’aide ?" data-en="Need help?">Besoin d’aide ?</span> ↗</a>
       </div>
@@ -39,7 +40,6 @@
           <p class="eyebrow">01 · <span data-fr="COMMENCER ICI" data-en="START HERE">COMMENCER ICI</span></p>
           <h2 id="quick-start-title" data-fr="Le guide en un coup d’œil" data-en="The guide at a glance">Le guide en un coup d’œil</h2>
         </div>
-        <div class="search-wrap"><label for="guide-search" data-fr="Rechercher dans le guide" data-en="Search the guide">Rechercher dans le guide</label><input id="guide-search" type="search" placeholder="Wi-Fi, café, départ…" data-placeholder-fr="Wi-Fi, café, départ…" data-placeholder-en="Wi-Fi, coffee, departure…"></div>
         <nav class="contents-grid" aria-label="Sommaire">
           <a class="contents-card" href="#essentiels" data-search="règles calme sécurité visitors rules quiet safety"><span class="card-number">01</span><strong data-fr="Les essentiels" data-en="The essentials">Les essentiels</strong><span data-fr="Les règles à connaître dès l’arrivée." data-en="The rules to know from arrival.">Les règles à connaître dès l’arrivée.</span></a>
           <a class="contents-card" href="#maison" data-search="cuisine kitchen salle bains bathroom compost déchets waste wifi café coffee"><span class="card-number">02</span><strong data-fr="La maison" data-en="The house">La maison</strong><span data-fr="Équipements, pièces et bons réflexes." data-en="Equipment, rooms and helpful tips.">Équipements, pièces et bons réflexes.</span></a>
