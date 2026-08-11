@@ -20,7 +20,7 @@ function applyLanguage(next) {
 
 languageButton.addEventListener('click', () => applyLanguage(language === 'fr' ? 'en' : 'fr'));
 search.addEventListener('input', () => {
-  const normalize = (value) => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+  const normalize = (value) => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[-_]/g, '');
   const term = normalize(search.value.trim());
   main.classList.toggle('is-searching', Boolean(term));
   introSections.forEach((section) => {

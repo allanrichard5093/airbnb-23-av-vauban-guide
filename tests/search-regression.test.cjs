@@ -3,7 +3,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 
 const index = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
-const script = fs.readFileSync(path.join(__dirname, '..', 'script.v2.js'), 'utf8');
+const script = fs.readFileSync(path.join(__dirname, '..', 'script.v3.js'), 'utf8');
 
 assert.match(index, /<section class="content-section" id="dehors">/);
 assert.match(index, /<section class="content-section emergency-section" id="urgence">/);
@@ -16,7 +16,7 @@ const sections = [
   { id: 'aide', textContent: 'Départ et aide urgence', visibleText: 'Départ et aide', hidden: false },
 ];
 const term = 'urgence';
-const normalize = (value) => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+const normalize = (value) => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[-_]/g, '');
 sections.forEach((section) => {
   section.hidden = Boolean(term) && !normalize(section.visibleText || section.textContent).includes(term);
 });
@@ -24,4 +24,6 @@ sections.forEach((section) => {
 assert.equal(sections.find((section) => section.id === 'urgence').hidden, false);
 assert.equal(sections.find((section) => section.id === 'dehors').hidden, true);
 assert.equal(sections.find((section) => section.id === 'aide').hidden, true);
+
+assert.equal(normalize('Wi-Fi').includes(normalize('wifi')), true);
 console.log('Search regression passed: urgence only displays #urgence.');
