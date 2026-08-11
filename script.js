@@ -8,7 +8,7 @@ function applyLanguage(next) {
   language = next;
   root.lang = language;
   document.querySelectorAll('[data-fr][data-en]').forEach((element) => {
-    element.textContent = element.dataset[language];
+    element.innerHTML = element.dataset[language];
   });
   document.querySelectorAll('[data-placeholder-fr][data-placeholder-en]').forEach((element) => {
     element.placeholder = element.dataset[`placeholder${language === 'fr' ? 'Fr' : 'En'}`];
