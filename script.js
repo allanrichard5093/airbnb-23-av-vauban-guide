@@ -2,6 +2,7 @@ const root = document.documentElement;
 const languageButton = document.querySelector('[data-language-toggle]');
 const search = document.querySelector('#guide-search');
 const cards = [...document.querySelectorAll('.contents-card')];
+const sections = [...document.querySelectorAll('main .content-section')];
 let language = 'fr';
 
 function applyLanguage(next) {
@@ -18,9 +19,13 @@ function applyLanguage(next) {
 
 languageButton.addEventListener('click', () => applyLanguage(language === 'fr' ? 'en' : 'fr'));
 search.addEventListener('input', () => {
-  const term = search.value.trim().toLowerCase();
+  const normalize = (value) => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+  const term = normalize(search.value.trim());
   cards.forEach((card) => {
-    card.hidden = term && !card.dataset.search.includes(term);
+    card.hidden = Boolean(term) && !normalize(`${card.dataset.search} ${card.textContent}`).includes(term);
+  });
+  sections.forEach((section) => {
+    section.hidden = Boolean(term) && !normalize(section.textContent).includes(term);
   });
 });
 
