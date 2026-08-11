@@ -7,17 +7,18 @@ const script = fs.readFileSync(path.join(__dirname, '..', 'script.js'), 'utf8');
 
 assert.match(index, /<section class="content-section" id="dehors">/);
 assert.match(index, /<section class="content-section emergency-section" id="urgence">/);
-assert.match(script, /section\.hidden = Boolean\(term\) && !normalize\(section\.textContent\)\.includes\(term\)/);
+assert.match(script, /searchable\.querySelectorAll\('\.contacts-box, \[hidden\]'\)/);
+assert.match(script, /section\.hidden = Boolean\(term\) && !normalize\(searchable\.textContent\)\.includes\(term\)/);
 
 const sections = [
   { id: 'dehors', textContent: 'Dehors Stationnement et plage', hidden: false },
   { id: 'urgence', textContent: 'Sécurité Urgence immédiate', hidden: false },
-  { id: 'aide', textContent: 'Départ et aide', hidden: false },
+  { id: 'aide', textContent: 'Départ et aide urgence', visibleText: 'Départ et aide', hidden: false },
 ];
 const term = 'urgence';
 const normalize = (value) => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
 sections.forEach((section) => {
-  section.hidden = Boolean(term) && !normalize(section.textContent).includes(term);
+  section.hidden = Boolean(term) && !normalize(section.visibleText || section.textContent).includes(term);
 });
 
 assert.equal(sections.find((section) => section.id === 'urgence').hidden, false);

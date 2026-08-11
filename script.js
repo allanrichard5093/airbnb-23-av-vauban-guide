@@ -1,4 +1,5 @@
 const root = document.documentElement;
+const main = document.querySelector('main');
 const languageButton = document.querySelector('[data-language-toggle]');
 const search = document.querySelector('#guide-search');
 const introSections = [...document.querySelectorAll('main > .hero, main > .quick-start')];
@@ -21,11 +22,14 @@ languageButton.addEventListener('click', () => applyLanguage(language === 'fr' ?
 search.addEventListener('input', () => {
   const normalize = (value) => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
   const term = normalize(search.value.trim());
+  main.classList.toggle('is-searching', Boolean(term));
   introSections.forEach((section) => {
     section.hidden = Boolean(term);
   });
   sections.forEach((section) => {
-    section.hidden = Boolean(term) && !normalize(section.textContent).includes(term);
+    const searchable = section.cloneNode(true);
+    searchable.querySelectorAll('.contacts-box, [hidden]').forEach((element) => element.remove());
+    section.hidden = Boolean(term) && !normalize(searchable.textContent).includes(term);
   });
 });
 
