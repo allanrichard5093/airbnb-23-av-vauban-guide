@@ -1,6 +1,7 @@
 const root = document.documentElement;
 const languageButton = document.querySelector('[data-language-toggle]');
 const search = document.querySelector('#guide-search');
+const introSections = [...document.querySelectorAll('main > .hero, main > .quick-start')];
 const sections = [...document.querySelectorAll('main .content-section')];
 let language = 'fr';
 
@@ -20,7 +21,10 @@ languageButton.addEventListener('click', () => applyLanguage(language === 'fr' ?
 search.addEventListener('input', () => {
   const normalize = (value) => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
   const term = normalize(search.value.trim());
-    sections.forEach((section) => {
+  introSections.forEach((section) => {
+    section.hidden = Boolean(term);
+  });
+  sections.forEach((section) => {
     section.hidden = Boolean(term) && !normalize(section.textContent).includes(term);
   });
 });
