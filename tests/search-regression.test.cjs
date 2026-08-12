@@ -3,7 +3,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 
 const index = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
-const script = fs.readFileSync(path.join(__dirname, '..', 'script.v4.js'), 'utf8');
+const script = fs.readFileSync(path.join(__dirname, '..', 'script.js'), 'utf8');
 const styles = fs.readFileSync(path.join(__dirname, '..', 'style.css'), 'utf8');
 
 assert.match(index, /<section class="content-section" id="dehors">/);
