@@ -4,9 +4,12 @@ const path = require('node:path');
 
 const index = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
 const script = fs.readFileSync(path.join(__dirname, '..', 'script.v4.js'), 'utf8');
+const styles = fs.readFileSync(path.join(__dirname, '..', 'style.css'), 'utf8');
 
 assert.match(index, /<section class="content-section" id="dehors">/);
 assert.match(index, /<section class="content-section emergency-section" id="urgence">/);
+assert.match(index, /sans frais de ménage&nbsp;:/);
+assert.match(styles, /\.topbar\{position:fixed/);
 assert.match(script, /searchable\.querySelectorAll\('\.contacts-box, \[hidden\]'\)/);
 assert.match(script, /section\.hidden = Boolean\(term\) && !normalize\(searchable\.textContent\)\.includes\(term\)/);
 
