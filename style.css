@@ -4,7 +4,7 @@ main.is-searching > .hero,main.is-searching > .quick-start{display:none!importan
 
 /* Keep the site header visible while mobile browser controls collapse. */
 @media(max-width:760px){
-  html{scroll-padding-top:74px}
-  body{padding-top:74px}
-  .topbar{position:fixed;top:env(safe-area-inset-top, 0px);left:0;right:0}
+  html{scroll-padding-top:98px}
+  body{padding-top:98px}
+  .topbar{position:fixed;top:max(24px, env(safe-area-inset-top));left:0;right:0}
 }
