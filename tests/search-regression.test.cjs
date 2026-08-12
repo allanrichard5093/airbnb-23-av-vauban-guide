@@ -10,7 +10,8 @@ assert.match(index, /<section class="content-section" id="dehors">/);
 assert.match(index, /<section class="content-section emergency-section" id="urgence">/);
 assert.match(index, /sans frais de ménage&nbsp;:/);
 assert.match(styles, /\.topbar\{position:fixed/);
-assert.match(styles, /top:max\(24px, env\(safe-area-inset-top\)\)/);
+assert.match(styles, /\.topbar\{position:fixed;top:0/);
+assert.match(styles, /padding-top:max\(14px, env\(safe-area-inset-top\)\)/);
 assert.match(script, /searchable\.querySelectorAll\('\.contacts-box, \[hidden\]'\)/);
 assert.match(script, /section\.hidden = Boolean\(term\) && !normalize\(searchable\.textContent\)\.includes\(term\)/);
 

@@ -6,5 +6,5 @@ main.is-searching > .hero,main.is-searching > .quick-start{display:none!importan
 @media(max-width:760px){
   html{scroll-padding-top:98px}
   body{padding-top:98px}
-  .topbar{position:fixed;top:max(24px, env(safe-area-inset-top));left:0;right:0}
+  .topbar{position:fixed;top:0;left:0;right:0;padding-top:max(14px, env(safe-area-inset-top));}
 }
