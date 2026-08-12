@@ -2,9 +2,8 @@
 main > .hero[hidden],main > .quick-start[hidden],main > .content-section[hidden]{display:none!important}
 main.is-searching > .hero,main.is-searching > .quick-start{display:none!important}
 
-/* Keep the site header visible while mobile browser controls collapse. */
-@media(max-width:760px){
-  html{scroll-padding-top:98px}
-  body{padding-top:98px}
-  .topbar{position:fixed;top:0;left:0;right:0;padding-top:max(14px, env(safe-area-inset-top));}
-}
+/* Keep the header fixed and reserve its measured height in the document flow. */
+:root{--topbar-height:0px}
+html{scroll-padding-top:var(--topbar-height)}
+body{padding-top:var(--topbar-height)}
+.topbar{position:fixed;top:0;left:0;right:0;z-index:1000}

@@ -9,9 +9,12 @@ const styles = fs.readFileSync(path.join(__dirname, '..', 'style.css'), 'utf8');
 assert.match(index, /<section class="content-section" id="dehors">/);
 assert.match(index, /<section class="content-section emergency-section" id="urgence">/);
 assert.match(index, /sans frais de ménage&nbsp;:/);
-assert.match(styles, /\.topbar\{position:fixed/);
-assert.match(styles, /\.topbar\{position:fixed;top:0/);
-assert.match(styles, /padding-top:max\(14px, env\(safe-area-inset-top\)\)/);
+assert.match(styles, /--topbar-height:0px/);
+assert.match(styles, /html\{scroll-padding-top:var\(--topbar-height\)\}/);
+assert.match(styles, /body\{padding-top:var\(--topbar-height\)\}/);
+assert.match(styles, /\.topbar\{position:fixed;top:0;left:0;right:0;z-index:1000\}/);
+assert.match(script, /getBoundingClientRect\(\)\.height/);
+assert.match(script, /ResizeObserver\(syncTopbarHeight\)/);
 assert.match(script, /searchable\.querySelectorAll\('\.contacts-box, \[hidden\]'\)/);
 assert.match(script, /section\.hidden = Boolean\(term\) && !normalize\(searchable\.textContent\)\.includes\(term\)/);
 

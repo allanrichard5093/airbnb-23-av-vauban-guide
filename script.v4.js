@@ -4,7 +4,12 @@ const languageButton = document.querySelector('[data-language-toggle]');
 const search = document.querySelector('#guide-search');
 const introSections = [...document.querySelectorAll('main > .hero, main > .quick-start')];
 const sections = [...document.querySelectorAll('main .content-section')];
+const topbar = document.querySelector('.topbar');
 let language = 'fr';
+
+function syncTopbarHeight() {
+  root.style.setProperty('--topbar-height', `${topbar.getBoundingClientRect().height}px`);
+}
 
 function applyLanguage(next) {
   language = next;
@@ -34,3 +39,6 @@ search.addEventListener('input', () => {
 });
 
 applyLanguage('fr');
+syncTopbarHeight();
+new ResizeObserver(syncTopbarHeight).observe(topbar);
+window.addEventListener('resize', syncTopbarHeight);
